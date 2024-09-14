@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">My Cashback</string>
+    <string name="products" translatable="false">Продукты</string>
+    <string name="housing" translatable="false">Дом и ремонт</string>
+    <string name="clothing" translatable="false">Одежда и обувь</string>
+    <string name="taxi" translatable="false">Такси</string>
+    <string name="drugstore">Аптеки</string>
+    <string name="entertainment">Развлечения</string>
+    <string name="dental">Стоматология</string>
+    <string name="transport">Транспорт</string>
+    <string name="electronics">Электроника</string>
+    <string name="restaurants">Кафе и рестораны</string>
+    <string name="flowers">Цветы</string>
+    <string name="kids">Детские товары</string>
+    <string name="other" translatable="false">Другое</string>
+
+    <string name="tbank">Т-Банк</string>
+    <string name="vtb">ВТБ</string>
+    <string name="alpha">Альфа-Банк</string>
+    <string name="sber">Сбербанк</string>
+    <string name="mkb">МКБ</string>
+    <string name="ozon">OZON Банк</string>
+    <string name="yandex">Yandex Pay</string>
+
+    <string name="Main">Главная страница</string>
+    <string name="banks">Банки</string>
+</resources>

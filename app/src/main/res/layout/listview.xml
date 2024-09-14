@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/system_control_activated_light"
+        android:minHeight="?android:attr/actionBarSize"
+        android:theme="@style/Theme.MyCashback" />
+
+    <Button
+        android:id="@+id/cashbackButton1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/products" />
+
+    <Button
+        android:id="@+id/cashbackButton2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/clothing" />
+
+    <Button
+        android:id="@+id/cashbackButton3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/housing" />
+
+    <Button
+        android:id="@+id/cashbackButton4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/taxi" />
+
+    <Button
+        android:id="@+id/cashbackButton5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/restaurants" />
+
+    <Button
+        android:id="@+id/cashbackButton6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dental" />
+
+    <Button
+        android:id="@+id/cashbackButton7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/drugstore" />
+
+    <Button
+        android:id="@+id/cashbackButton8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/flowers" />
+
+    <Button
+        android:id="@+id/cashbackButton9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/kids" />
+
+    <Button
+        android:id="@+id/cashbackButton10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/electronics" />
+
+    <Button
+        android:id="@+id/cashbackButton11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/entertainment" />
+
+    <Button
+        android:id="@+id/cashbackButton12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/transport" />
+
+    <Button
+        android:id="@+id/cashbackButton13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/other" />
+
+</LinearLayout>
