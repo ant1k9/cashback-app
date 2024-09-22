@@ -14,14 +14,10 @@
     <string name="kids">Детские товары</string>
     <string name="other" translatable="false">Другое</string>
 
-    <string name="tbank">Т-Банк</string>
-    <string name="vtb">ВТБ</string>
-    <string name="alpha">Альфа-Банк</string>
-    <string name="sber">Сбербанк</string>
-    <string name="mkb">МКБ</string>
-    <string name="ozon">OZON Банк</string>
-    <string name="yandex">Yandex Pay</string>
-
     <string name="Main">Главная страница</string>
     <string name="banks">Банки</string>
+    <string name="add_bank">Добавить банк</string>
+    <string name="add_bank_hint">Введите название банка</string>
+    <string name="x">❌</string>
+    <string name="cancel">Отмена</string>
 </resources>

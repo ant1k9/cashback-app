@@ -1,11 +1,22 @@
 package com.example.mycashback
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.Button
+import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mycashback.storage.BanksFileStorageProxy
+import com.example.mycashback.storage.CategoriesFileStorageProxy
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -14,29 +25,48 @@ class MainActivity : ComponentActivity() {
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.banks -> {
+                val intent = Intent(this, BanksActivity::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.listview)
 
         setActionBar(findViewById(R.id.toolbar))
 
-        val offers = mapOf(
-            R.string.products to R.string.tbank,
-            R.string.restaurants to R.string.ozon,
-            R.string.other to R.string.tbank,
-            R.string.clothing to R.string.sber,
-            R.string.transport to R.string.sber,
-            R.string.dental to R.string.mkb,
-            R.string.drugstore to R.string.tbank,
-            R.string.electronics to R.string.vtb,
-            R.string.kids to R.string.vtb,
-            R.string.entertainment to R.string.tbank,
-            R.string.flowers to R.string.ozon,
-            R.string.housing to R.string.alpha,
-            R.string.taxi to R.string.mkb
-        ).map {
-            resources.getString(it.key) to resources.getString(it.value)
-        }.toMap()
+        val categoriesFileName = filesDir.path + "/" + "categories-2024-09.json"
+        val categoriesFileStorageProxy = CategoriesFileStorageProxy(categoriesFileName)
+
+        val banksFileName = filesDir.path + "/" + "banks.json"
+        val banksFileStorageProxy = BanksFileStorageProxy(banksFileName)
+
+        /*
+        val offers = listOf(
+            R.string.products,
+            R.string.restaurants,
+            R.string.other,
+            R.string.clothing,
+            R.string.transport,
+            R.string.dental,
+            R.string.drugstore,
+            R.string.electronics,
+            R.string.kids,
+            R.string.entertainment,
+            R.string.flowers,
+            R.string.housing,
+            R.string.taxi
+        ).map { resources.getString(it) }
+         */
 
         listOf(
             R.id.cashbackButton1,
@@ -56,12 +86,38 @@ class MainActivity : ComponentActivity() {
             val button = findViewById<Button>(it)
             button.setOnClickListener { b ->
                 val category = findViewById<Button>(b.id).text
-                val bank = offers[category]
-                Toast.makeText(
-                    applicationContext,
-                    "Для категории $category лучший cashback в банке $bank",
-                    Toast.LENGTH_LONG
-                ).show()
+                val bank = categoriesFileStorageProxy.get(category.toString())
+                val toastMessage = when (bank) {
+                    "" -> "Для категории $category нет выбранного банка в этом месяце"
+                    else -> "Для категории $category лучший cashback в банке $bank"
+                }
+                Toast.makeText(applicationContext, toastMessage, Toast.LENGTH_LONG).show()
+            }
+
+            button.setOnLongClickListener{ b ->
+                val popupView = layoutInflater.inflate(R.layout.choicepopup, null)
+
+                val choiceGridItemAdapter = ChoiceGridItemAdapter(
+                    button.text.toString(),
+                    categoriesFileStorageProxy,
+                    banksFileStorageProxy,
+                )
+
+                val recyclerView: RecyclerView = popupView.findViewById(R.id.choice_list)
+                recyclerView.layoutManager = LinearLayoutManager(this)
+                recyclerView.adapter = choiceGridItemAdapter
+
+                val popupWindow = PopupWindow(popupView)
+                popupWindow.width = 1000
+                popupWindow.height = 2000
+
+                choiceGridItemAdapter.setPopupWindow(popupWindow)
+
+                val cancelButton = popupView.findViewById<Button>(R.id.cancel_button)
+                cancelButton.setOnClickListener{ popupWindow.dismiss() }
+
+                popupWindow.showAsDropDown(button, 0, 0, Gravity.BOTTOM)
+                true
             }
         }
     }
