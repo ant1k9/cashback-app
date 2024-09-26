@@ -1,4 +1,4 @@
-package com.example.mycashback
+package com.example.mycashback.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.PopupWindow
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mycashback.R
 import com.example.mycashback.storage.BanksFileStorageProxy
 import com.example.mycashback.storage.CategoriesFileStorageProxy
 
@@ -16,7 +17,8 @@ class ChoiceGridItemAdapter(
 ) :
     RecyclerView.Adapter<ChoiceGridItemAdapter.ViewHolder>() {
 
-    var parentWindow: PopupWindow = PopupWindow()
+    private var parentWindow: PopupWindow = PopupWindow()
+
     fun setPopupWindow(popupWindow: PopupWindow) {
         this.parentWindow = popupWindow
     }

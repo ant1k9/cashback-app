@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,84 +9,75 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
         android:theme="@style/Theme.MyCashback" />
 
-    <Button
-        android:id="@+id/cashbackButton1"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/products" />
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/category_menu_footer">
 
-    <Button
-        android:id="@+id/cashbackButton2"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categories_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/category_menu_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/clothing" />
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/cashbackButton3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/housing" />
+        <EditText
+            android:id="@+id/add_category_text_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/add_category_hint"
+            android:inputType="text"
+            android:outlineAmbientShadowColor="@color/black"
+            android:shadowColor="@color/black" />
 
-    <Button
-        android:id="@+id/cashbackButton4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/taxi" />
+        <Button
+            android:id="@+id/add_category_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/add_category" />
 
-    <Button
-        android:id="@+id/cashbackButton5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/restaurants" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/cashbackButton6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dental" />
+            <Button
+                android:id="@+id/previous_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/previous" />
 
-    <Button
-        android:id="@+id/cashbackButton7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/drugstore" />
+            <TextView
+                android:id="@+id/current_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
 
-    <Button
-        android:id="@+id/cashbackButton8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/flowers" />
+            <Button
+                android:id="@+id/next_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/next"
+                tools:ignore="RelativeOverlap" />
 
-    <Button
-        android:id="@+id/cashbackButton9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/kids" />
+        </RelativeLayout>
 
-    <Button
-        android:id="@+id/cashbackButton10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/electronics" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/cashbackButton11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/entertainment" />
-
-    <Button
-        android:id="@+id/cashbackButton12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/transport" />
-
-    <Button
-        android:id="@+id/cashbackButton13"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/other" />
-
-</LinearLayout>
+</RelativeLayout>

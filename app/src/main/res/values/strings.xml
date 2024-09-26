@@ -1,18 +1,5 @@
 <resources>
     <string name="app_name">My Cashback</string>
-    <string name="products" translatable="false">Продукты</string>
-    <string name="housing" translatable="false">Дом и ремонт</string>
-    <string name="clothing" translatable="false">Одежда и обувь</string>
-    <string name="taxi" translatable="false">Такси</string>
-    <string name="drugstore">Аптеки</string>
-    <string name="entertainment">Развлечения</string>
-    <string name="dental">Стоматология</string>
-    <string name="transport">Транспорт</string>
-    <string name="electronics">Электроника</string>
-    <string name="restaurants">Кафе и рестораны</string>
-    <string name="flowers">Цветы</string>
-    <string name="kids">Детские товары</string>
-    <string name="other" translatable="false">Другое</string>
 
     <string name="Main">Главная страница</string>
     <string name="banks">Банки</string>
@@ -20,4 +7,9 @@
     <string name="add_bank_hint">Введите название банка</string>
     <string name="x">❌</string>
     <string name="cancel">Отмена</string>
+    <string name="previous">&lt;&lt;&lt;</string>
+    <string name="next">&gt;&gt;&gt;</string>
+    <string name="add_category">Добавить категорию</string>
+    <string name="add_category_hint">Введите название категории</string>
+
 </resources>

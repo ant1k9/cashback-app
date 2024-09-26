@@ -1,7 +1,5 @@
 package com.example.mycashback.storage
 
-import org.json.JSONObject
-
 open class FileStorageProxy(path: String) {
     private val storage = FileStorage(path)
     protected val data = storage.load()

@@ -3,7 +3,7 @@ package com.example.mycashback.storage
 import org.json.JSONObject
 import java.io.File
 
-class FileStorage(private val path: String) {
+class FileStorage(path: String) {
     private val storage = File(path)
 
     init {

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mycashback.adapters.BankGridItemAdapter
 import com.example.mycashback.storage.BanksFileStorageProxy
 
 class BanksActivity : ComponentActivity() {
