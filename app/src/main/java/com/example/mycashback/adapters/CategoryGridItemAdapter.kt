@@ -41,8 +41,8 @@ class CategoryGridItemAdapter(
             val category = (it as Button).text
             val bank = categoriesFileStorageProxy.get(category.toString())
             val toastMessage = when (bank) {
-                "" -> "Для категории $category нет выбранного банка в этом месяце"
-                else -> "Для категории $category лучший cashback в банке $bank"
+                "" -> "Для категории $category не выбран банк в этом месяце"
+                else -> "Лучший cashback для категории $category в $bank"
             }
             Toast.makeText(applicationContext, toastMessage, Toast.LENGTH_LONG).show()
         }
