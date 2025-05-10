@@ -67,9 +67,6 @@ class CategoryGridItemAdapter(
 
             choiceGridItemAdapter.setPopupWindow(popupWindow)
 
-            val cancelButton = popupView.findViewById<Button>(R.id.cancel_button)
-            cancelButton.setOnClickListener { popupWindow.dismiss() }
-
             popupWindow.showAsDropDown(it, 0, 0, Gravity.BOTTOM)
             true
         }
