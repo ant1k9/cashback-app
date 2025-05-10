@@ -35,7 +35,8 @@ class BanksActivity : ComponentActivity() {
     }
 
     private fun renderBanksList(banksFileStorageProxy: BanksFileStorageProxy) {
-        val bankGridItemAdapter = BankGridItemAdapter(banksFileStorageProxy)
+        val bankGridItemAdapter =
+            BankGridItemAdapter(banksFileStorageProxy, { renderBanksList(banksFileStorageProxy) })
 
         val recyclerView: RecyclerView = findViewById(R.id.banks_list)
         recyclerView.layoutManager = LinearLayoutManager(this)

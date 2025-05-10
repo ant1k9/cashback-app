@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mycashback.R
 import com.example.mycashback.storage.BanksFileStorageProxy
 
-class BankGridItemAdapter(private val banksFileStorageProxy: BanksFileStorageProxy) :
+class BankGridItemAdapter(
+    private val banksFileStorageProxy: BanksFileStorageProxy,
+    private val redrawCallback: () -> Unit
+) :
     RecyclerView.Adapter<BankGridItemAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.textView)
@@ -25,9 +28,9 @@ class BankGridItemAdapter(private val banksFileStorageProxy: BanksFileStoragePro
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.textView.text = banksFileStorageProxy.get(position.toString())
-        viewHolder.button.setOnClickListener{
-            notifyItemRemoved(position)
+        viewHolder.button.setOnClickListener {
             banksFileStorageProxy.remove(position.toString())
+            redrawCallback()
         }
     }
 

@@ -6,21 +6,28 @@ class BanksFileStorageProxy(path: String) : FileStorageProxy(path) {
     }
 
     private fun compact() {
-        val banks = mutableMapOf<String, String>()
+        val banks = mutableSetOf<String>()
         val currentKeys = mutableListOf<String>()
 
         data.keys().withIndex().forEach {
-            banks[it.index.toString()] = data.getString(it.value)
+            banks.add(data.getString(it.value))
             currentKeys.add(it.value)
         }
 
         currentKeys.forEach { super.remove(it) }
 
-        banks.forEach { super.add(it.key, it.value) }
+        banks.sorted().withIndex().forEach {
+            super.add(it.index.toString(), it.value)
+        }
     }
 
     fun add(value: String) {
-        compact()
         super.add(size().toString(), value)
+        compact()
+    }
+
+    override fun remove(key: String) {
+        super.remove(key)
+        compact()
     }
 }

@@ -4,7 +4,7 @@ open class FileStorageProxy(path: String) {
     private val storage = FileStorage(path)
     protected val data = storage.load()
 
-    fun add(key: String, value: String) {
+    open fun add(key: String, value: String) {
         data.put(key, value)
         storage.save(data)
     }
@@ -17,7 +17,7 @@ open class FileStorageProxy(path: String) {
         return count
     }
 
-    fun remove(key: String) {
+    open fun remove(key: String) {
         data.remove(key)
         storage.save(data)
     }

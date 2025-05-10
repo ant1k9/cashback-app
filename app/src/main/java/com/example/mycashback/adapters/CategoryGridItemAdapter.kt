@@ -63,6 +63,7 @@ class CategoryGridItemAdapter(
             val popupWindow = PopupWindow(popupView)
             popupWindow.width = 1000
             popupWindow.height = 2000
+            popupWindow.isFocusable = true
 
             choiceGridItemAdapter.setPopupWindow(popupWindow)
 
