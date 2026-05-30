@@ -21,6 +21,7 @@ class CategoryGridItemAdapter(
     private val categoriesFileStorageProxy: CategoriesFileStorageProxy,
     private val banksFileStorageProxy: BanksFileStorageProxy,
     private val categories: List<String>,
+    private val redrawCallback: () -> Unit,
 ) :
     RecyclerView.Adapter<CategoryGridItemAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -54,6 +55,7 @@ class CategoryGridItemAdapter(
                 (it as Button).text.toString(),
                 categoriesFileStorageProxy,
                 banksFileStorageProxy,
+                redrawCallback,
             )
 
             val recyclerView: RecyclerView = popupView.findViewById(R.id.choice_list)

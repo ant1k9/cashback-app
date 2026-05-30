@@ -11,5 +11,6 @@
     <string name="next">&gt;&gt;&gt;</string>
     <string name="add_category">Добавить категорию</string>
     <string name="add_category_hint">Введите название категории</string>
+    <string name="remove_category">Удалить категорию</string>
 
 </resources>

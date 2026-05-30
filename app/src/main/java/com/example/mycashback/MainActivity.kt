@@ -66,7 +66,8 @@ class MainActivity : Activity() {
     ) {
         val categoryGridItemAdapter = CategoryGridItemAdapter(
             applicationContext, layoutInflater, categoriesFileStorageProxy, banksFileStorageProxy,
-            categoriesFileStorageProxy.list()
+            categoriesFileStorageProxy.list(),
+            { renderCategoryList(categoriesFileStorageProxy, banksFileStorageProxy) }
         )
 
         val recyclerView: RecyclerView = findViewById(R.id.categories_list)

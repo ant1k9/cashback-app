@@ -5,15 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.PopupWindow
+import androidx.compose.ui.graphics.Color
+import androidx.core.graphics.red
+import androidx.core.graphics.toColor
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycashback.R
 import com.example.mycashback.storage.BanksFileStorageProxy
 import com.example.mycashback.storage.CategoriesFileStorageProxy
+import kotlin.math.absoluteValue
 
 class ChoiceGridItemAdapter(
     private val category: String,
     private val categoriesFileStorageProxy: CategoriesFileStorageProxy,
     private val banksFileStorageProxy: BanksFileStorageProxy,
+    private val redrawCallback: () -> Unit
 ) :
     RecyclerView.Adapter<ChoiceGridItemAdapter.ViewHolder>() {
 
@@ -35,6 +40,17 @@ class ChoiceGridItemAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        if (position == banksFileStorageProxy.size()) {
+            viewHolder.button.setText(R.string.remove_category)
+            viewHolder.button.setBackgroundResource(R.color.red)
+            viewHolder.button.setOnClickListener {
+                categoriesFileStorageProxy.remove(category)
+                parentWindow.dismiss()
+                redrawCallback()
+            }
+            return
+       }
+
         viewHolder.button.text = banksFileStorageProxy.get(position.toString())
         viewHolder.button.setOnClickListener {
             notifyItemRemoved(position)
@@ -44,7 +60,7 @@ class ChoiceGridItemAdapter(
     }
 
     override fun getItemCount(): Int {
-        return banksFileStorageProxy.size()
+        return banksFileStorageProxy.size() + 1
     }
 
     override fun getItemId(position: Int): Long = position.toLong()
